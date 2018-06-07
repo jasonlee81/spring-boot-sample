@@ -35,6 +35,21 @@ pipeline {
         archiveArtifacts 'target/*.jar'
       }
     }
+    stages {
+        stage('Wait for confirm') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "admin"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+    }
     stage('deploy') {
       steps {
         sh 'make deploy-default'
