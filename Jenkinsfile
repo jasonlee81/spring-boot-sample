@@ -35,7 +35,6 @@ pipeline {
         archiveArtifacts 'target/*.jar'
       }
     }
-    stages {
         stage('Wait for confirm') {
             input {
                 message "Should we continue?"
@@ -49,7 +48,6 @@ pipeline {
                 echo "Hello, ${PERSON}, nice to meet you."
             }
         }
-    }
     stage('deploy') {
       steps {
         sh 'make deploy-default'
