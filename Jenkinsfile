@@ -66,10 +66,6 @@ pipeline {
 
 
 
-
-
-
-
 docker push localhost:5000/spring-boot-sample-prod
 docker pull localhost:5000/spring-boot-sample-prod
 docker run -d -p 8800:8000 localhost:5000/spring-boot-sample-prod
